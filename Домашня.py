@@ -1,27 +1,12 @@
-# Завдання 1
-# Реалізуйте клас стеку для роботи з рядками (стек рядків).
-# Стек має бути фіксованого розміру. Реалізуйте набір операцій
-# для роботи зі стеком:
-# o розміщення рядка у стек;
-# o виштовхування рядка зі стеку;
-# o підрахунок кількості рядків у стеку;
-# o перевірку, чи порожній стек;
-# o перевірку, чи повний стек;
-# o очищення стеку;
-# o отримання значення без виштовхування
-# верхнього рядка зі стеку.
-# На старті додатка відобразіть меню, в якому користувач
-# може вибрати необхідну операцію.
+# Завдання 2
+# Змініть стек із першого завдання таким чином, щоб його
+# розмір був нефіксованим.
 class StringStack:
-    def __init__(self, max_size):
-        self.max_size = max_size
+    def __init__(self):
         self.stack = []
 
     def push(self, string):
-        if len(self.stack) < self.max_size:
-            self.stack.append(string)
-        else:
-            print("Стек повний")
+        self.stack.append(string)
 
     def pop(self):
         if self.stack:
@@ -35,9 +20,6 @@ class StringStack:
 
     def is_empty(self):
         return len(self.stack) == 0
-
-    def is_full(self):
-        return len(self.stack) == self.max_size
 
     def clear(self):
         self.stack.clear()
@@ -55,13 +37,11 @@ def display_menu():
     print("2. Виштовхнути рядок зі стеку")
     print("3. Підрахунок кількості рядків у стеку")
     print("4. Перевірка, чи порожній стек")
-    print("5. Перевірка, чи повний стек")
-    print("6. Очищення стеку")
-    print("7. Отримання значення без виштовхування верхнього рядка зі стеку")
+    print("5. Очищення стеку")
+    print("6. Отримання значення без виштовхування верхнього рядка зі стеку")
     print("0. Вихід")
 
-stack_size = 5
-stack = StringStack(stack_size)
+stack = StringStack()
 
 while True:
     display_menu()
@@ -79,11 +59,9 @@ while True:
     elif choice == '4':
         print("Стек порожній:", stack.is_empty())
     elif choice == '5':
-        print("Стек повний:", stack.is_full())
-    elif choice == '6':
         stack.clear()
         print("Стек очищено")
-    elif choice == '7':
+    elif choice == '6':
         top_string = stack.peek()
         if top_string is not None:
             print("Верхній рядок у стеку:", top_string)
